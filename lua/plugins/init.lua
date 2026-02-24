@@ -28,6 +28,7 @@ return {
                     },
                 },
             },
+            signature = { enabled = true },
             fuzzy = { implementation = "rust" },
         },
     },
