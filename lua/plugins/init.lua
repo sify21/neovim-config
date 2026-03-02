@@ -32,4 +32,10 @@ return {
             fuzzy = { implementation = "rust" },
         },
     },
+    {
+        "carlos-algms/agentic.nvim",
+        opts = {
+            provider = "opencode-acp",
+        },
+    }
 }
