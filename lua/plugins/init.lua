@@ -36,7 +36,9 @@ return {
         'MeanderingProgrammer/render-markdown.nvim',
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
-        opts = {},
+        opts = {
+            file_types = { "markdown", "md", "AgenticChat" },
+        },
     },
     {
         "carlos-algms/agentic.nvim",
