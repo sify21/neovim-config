@@ -33,6 +33,12 @@ return {
         },
     },
     {
+        'MeanderingProgrammer/render-markdown.nvim',
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
+    },
+    {
         "carlos-algms/agentic.nvim",
         opts = {
             -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "auggie-acp" | "mistral-vibe-acp"
@@ -41,31 +47,47 @@ return {
         -- these are just suggested keymaps; customize as desired
         keys = {
             {
-                "<C-\\>",
+                "<leader>a\\",
                 function() require("agentic").toggle() end,
                 mode = { "n", "v", "i" },
                 desc = "Toggle Agentic Chat"
             },
             {
-                "<M-'>",
-                function() require("agentic").add_selection_or_file_to_context() end,
+                "<leader>a'",
+                function() require("agentic").add_selection_or_file_to_context({ focus_prompt = false }) end,
                 mode = { "n", "v" },
                 desc = "Add file or selection to Agentic to Context"
             },
             {
-                "<M-,>",
+                "<leader>an",
                 function() require("agentic").new_session() end,
                 mode = { "n", "v", "i" },
                 desc = "New Agentic Session"
             },
             {
-                "<A-i>r", -- ai Restore
+                "<leader>ar", -- ai Restore
                 function()
                     require("agentic").restore_session()
                 end,
                 desc = "Agentic Restore session",
                 silent = true,
                 mode = { "n", "v", "i" },
+            },
+            {
+                "<leader>ad", -- ai Diagnostics
+                function()
+                    require("agentic").add_current_line_diagnostics({ focus_prompt = false })
+                end,
+                desc = "Add current line diagnostic to Agentic",
+                mode = { "n" },
+            },
+            {
+                "<leader>aD", -- ai all Diagnostics
+                function()
+                    require("agentic").add_buffer_diagnostics({ focus_prompt = false })
+                end,
+                desc = "Add all buffer diagnostics to Agentic",
+                mode = { "n" },
             },
         },
     }
