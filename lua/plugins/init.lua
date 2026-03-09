@@ -45,6 +45,11 @@ return {
         opts = {
             -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "auggie-acp" | "mistral-vibe-acp"
             provider = "opencode-acp", -- setting the name here is all you need to get started
+            diff_preview = {
+                enabled = true,
+                layout = "inline", -- "split" or "inline"
+                center_on_navigate_hunks = true,
+            },
         },
         -- these are just suggested keymaps; customize as desired
         keys = {
