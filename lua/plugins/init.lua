@@ -34,17 +34,18 @@ return {
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {
-            file_types = { "markdown", "md", "AgenticChat" },
+            file_types = { "markdown", "AgenticChat" },
         },
     },
     {
         "carlos-algms/agentic.nvim",
         opts = {
             -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "auggie-acp" | "mistral-vibe-acp"
-            provider = "opencode-acp", -- setting the name here is all you need to get started
+            provider = "cursor-acp", -- setting the name here is all you need to get started
             diff_preview = {
                 enabled = true,
                 layout = "inline", -- "split" or "inline"
