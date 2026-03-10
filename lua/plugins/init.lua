@@ -44,8 +44,14 @@ return {
     {
         "carlos-algms/agentic.nvim",
         opts = {
-            -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "auggie-acp" | "mistral-vibe-acp"
-            provider = "cursor-acp", -- setting the name here is all you need to get started
+            -- Available by default: "claude-agent-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "auggie-acp" | "mistral-vibe-acp"
+            provider = "claude-agent-acp", -- setting the name here is all you need to get started
+            acp_providers = {
+                ["claude-agent-acp"] = {
+                    command = "cursor-agent",
+                    args = { "acp" }
+                },
+            },
             diff_preview = {
                 enabled = true,
                 layout = "inline", -- "split" or "inline"
