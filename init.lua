@@ -5,6 +5,7 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.wrap = false
+vim.keymap.set('n', '-', ':Explore<CR>', { desc = 'Open file explorer' })
 
 -- load Lazy.nvim plugins
 require("config.lazy")
