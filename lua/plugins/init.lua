@@ -67,6 +67,12 @@ return {
                 desc = "Toggle Agentic Chat"
             },
             {
+                "<leader>al",
+                function() require("agentic").rotate_layout({ "right", "bottom" }) end,
+                mode = { "n", "v", "i" },
+                desc = "Rotate between Agentic layouts"
+            },
+            {
                 "<leader>a'",
                 function() require("agentic").add_selection_or_file_to_context({ focus_prompt = false }) end,
                 mode = { "n", "v" },
