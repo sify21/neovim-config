@@ -33,6 +33,25 @@ return {
         },
     },
     {
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        build = ':TSUpdate',
+        opts = {
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
+        },
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        opts = {
+            auto_integrations = true,
+        }
+    },
+    {
         'MeanderingProgrammer/render-markdown.nvim',
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         ---@module 'render-markdown'
