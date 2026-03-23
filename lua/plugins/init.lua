@@ -11,6 +11,35 @@ return {
             },
         },
     },
+    {
+        "hedyhli/outline.nvim",
+        lazy = true,
+        cmd = { "Outline", "OutlineOpen" },
+        keys = { -- Example mapping to toggle outline
+          { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+        },
+        opts = {
+          -- Your setup opts here
+        },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        init = function()
+          -- Disable entire built-in ftplugin mappings to avoid conflicts.
+          -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+          -- vim.g.no_plugin_maps = true
+
+          -- Or, disable per filetype (add as you like)
+          vim.g.no_python_maps = true
+          -- vim.g.no_ruby_maps = true
+          -- vim.g.no_rust_maps = true
+          -- vim.g.no_go_maps = true
+        end,
+        config = function()
+          -- put your config here
+        end,
+    },
     { -- optional blink completion source for require statements and module annotations
         "saghen/blink.cmp",
         dependencies = { 'rafamadriz/friendly-snippets' },
@@ -74,14 +103,7 @@ return {
     {
         "carlos-algms/agentic.nvim",
         opts = {
-            -- Available by default: "claude-agent-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "auggie-acp" | "mistral-vibe-acp"
-            provider = "claude-agent-acp", -- setting the name here is all you need to get started
-            acp_providers = {
-                ["claude-agent-acp"] = {
-                    command = "cursor-agent",
-                    args = { "acp" }
-                },
-            },
+            provider = "cursor-acp",
             diff_preview = {
                 enabled = true,
                 layout = "inline", -- "split" or "inline"
