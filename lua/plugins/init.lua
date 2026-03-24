@@ -12,14 +12,14 @@ return {
         },
     },
     {
-        "hedyhli/outline.nvim",
-        lazy = true,
-        cmd = { "Outline", "OutlineOpen" },
-        keys = { -- Example mapping to toggle outline
-          { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-        },
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        build = ':TSUpdate',
         opts = {
-          -- Your setup opts here
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
         },
     },
     {
@@ -62,15 +62,34 @@ return {
         },
     },
     {
-        'nvim-treesitter/nvim-treesitter',
-        lazy = false,
-        build = ':TSUpdate',
-        opts = {
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
+        "hedyhli/outline.nvim",
+        lazy = true,
+        cmd = { "Outline", "OutlineOpen" },
+        keys = { -- Example mapping to toggle outline
+          { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
         },
+        opts = {
+          -- Your setup opts here
+        },
+    },
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        -- Optional dependencies
+        -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+        dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+        lazy = false,
+    },
+    {
+        'nvim-telescope/telescope.nvim', version = '*',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            -- optional but recommended
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
     },
     {
         "catppuccin/nvim",
@@ -88,17 +107,6 @@ return {
         opts = {
             file_types = { "markdown", "AgenticChat" },
         },
-    },
-    {
-        'stevearc/oil.nvim',
-        ---@module 'oil'
-        ---@type oil.SetupOpts
-        opts = {},
-        -- Optional dependencies
-        -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-        dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-        lazy = false,
     },
     {
         "carlos-algms/agentic.nvim",
