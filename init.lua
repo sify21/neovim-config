@@ -5,6 +5,7 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.wrap = false
+vim.opt.mousescroll = "ver:1,hor:1"
 
 -- load Lazy.nvim plugins
 require("config.lazy")
