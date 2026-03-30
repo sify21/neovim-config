@@ -18,6 +18,7 @@ vim.lsp.enable("basedpyright")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("jdtls")
 
 -- nvim-treesitter parsers
 require('nvim-treesitter').install { 'rust', 'python', 'html', 'latex', 'yaml', 'java' }
@@ -35,10 +36,18 @@ vim.keymap.set({ "x", "o" }, "ib", function() _select.select_textobject("@block.
 vim.cmd("colorscheme catppuccin-nvim")
 
 -- telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope LSP document symbols' })
-vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = 'Telescope LSP references' })
+local _builtin = require('telescope.builtin')
+local _CallTelescope = function(input, opts)
+    opts = opts or {}
+    local theme = require('telescope.themes').get_dropdown(opts)
+    input(theme)
+end
+vim.keymap.set('n', '<leader>ff', function () _CallTelescope(_builtin.find_files) end, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', function () _CallTelescope(_builtin.live_grep) end, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', function () _CallTelescope(_builtin.buffers) end, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', function () _CallTelescope(_builtin.help_tags) end, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>fs', function () _CallTelescope(_builtin.lsp_document_symbols) end, { desc = 'Telescope LSP document symbols' })
+vim.keymap.set('n', '<leader>fr', function () _CallTelescope(_builtin.lsp_references) end, { desc = 'Telescope LSP references' })
+vim.keymap.set('n', '<leader>ft', function () _CallTelescope(_builtin.treesitter) end, { desc = 'Lists Function names, variables, ... using treesitter locals queries' })
+vim.keymap.set('n', '<leader>fd', function () _CallTelescope(_builtin.diagnostics, {bufnr=0}) end, { desc = 'Lists Diagnostics for current buffer' })
+vim.keymap.set('n', '<leader>fD', function () _CallTelescope(_builtin.diagnostics) end, { desc = 'Lists All Diagnostics' })
