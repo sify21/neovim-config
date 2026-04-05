@@ -142,15 +142,23 @@ return {
                 "<leader>an",
                 function() require("agentic").new_session() end,
                 mode = { "n", "v", "i" },
-                desc = "New Agentic Session"
+                desc = "New Session"
             },
             {
                 "<leader>ar", -- ai Restore
                 function()
                     require("agentic").restore_session()
                 end,
-                desc = "Agentic Restore session",
+                desc = "Restore session",
                 silent = true,
+                mode = { "n", "v", "i" },
+            },
+            {
+                "<leader>as",
+                function()
+                    require("agentic").stop_generation()
+                end,
+                desc = "Stop current generation or tool execution (session stays active)",
                 mode = { "n", "v", "i" },
             },
             {
